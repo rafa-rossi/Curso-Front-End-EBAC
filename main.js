@@ -1,26 +1,16 @@
-const form = document.getElementById('form-container');
-const primeiroNumero = document.getElementById('number1');
-const segundoNumero = document.getElementById('number2');
-
-
-form.addEventListener('submit', function(e) {
-    const mensagemErro = document.querySelector('.error-message');
-    e.preventDefault();
+$(document).ready(function() {
     
-    if (segundoNumero.value > primeiroNumero.value) {
-        const mensagemSucesso = document.querySelector('.success-message');
+    $('form button[type=submit]').click(function(e) {
+        e.preventDefault();
 
-        mensagemSucesso.innerHTML = `Formulario Validado com Sucesso`;
-        mensagemErro.style.display = 'none';
-        mensagemSucesso.style.display = 'block';
+        const inputTarefa = $('#nome-tarefa').val();
+        const novoItem = $('<li class="tarefas"></li>');
+        $(`
+            <input type="checkbox" name="${inputTarefa}" id="${inputTarefa}">
+            <label for="${inputTarefa}">${inputTarefa}</label>
+        `).appendTo(novoItem);
 
-        primeiroNumero.value = '';
-        segundoNumero.value = '';
-
-    } else {
-        mensagemErro.innerHTML = `${primeiroNumero.value} é maior que ${segundoNumero.value} tente um numero menor`;
-        mensagemErro.style.display = 'block';
-    }
-
-})
-
+        novoItem.appendTo('ul');
+        $('#nome-tarefa').val(' ');
+    });
+});
