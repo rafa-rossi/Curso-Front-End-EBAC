@@ -1,6 +1,6 @@
 $(document).ready(function() {
     
-    $('form button[type=submit]').click(function(e) {
+    $('form button').click(function(e) {
         e.preventDefault();
 
         const inputTarefa = $('#nome-tarefa').val();
